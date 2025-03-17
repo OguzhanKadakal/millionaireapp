@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./app.css"
 
 function App() {
@@ -21,11 +22,16 @@ function App() {
   ].reverse();
   return (
     <div className="app">
-      <div className="main">main</div>
+      <div className="main">
+        <div className="top">
+          <div className="timer">30</div>
+        </div>
+        <div className="bottom">questions and answers</div>
+      </div>
       <div className="pyramid">
         <ul className="moneyList">
           {moneyPyramid.map((m) => (
-            <li className="moneyListItem">
+            <li className={questionNumber === m.id ? "moneyListItem active" : "moneyListItem"}>
               <span className="moneyListItemNumber">{m.id}</span>
               <span className="moneyListItemAmount">{m.amount}</span>
             </li>
@@ -33,7 +39,7 @@ function App() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
 export default App
