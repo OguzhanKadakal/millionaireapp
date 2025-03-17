@@ -65,9 +65,48 @@
   cursor: pointer;
   margin: 0 10px 20px 10px;
 }
-.answer:hover {
+.answer:hover,
+.answer.active {
   background: mediumblue;
 }
+.answer.correct {
+  animation: correct 3s ease forwards;
+}
+@keyframes correct {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
+  }
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#100241, black);
+  }
+  62%,
+  100% {
+    background: green;
+  }
+}
+.answer.wrong {
+    animation: correct 3s ease forwards;
+  }
+  @keyframes wrong {
+    0%,
+    22%,
+    42% {
+      background: mediumblue;
+    }
+    20%,
+    40%,
+    60% {
+      background: linear-gradient(#100241, black);
+    }
+    62%,
+    100% {
+      background: crimson;
+    }
+  }
 .pyramid {
   width: 25%;
   display: flex;
