@@ -89,7 +89,7 @@
   }
 }
 .answer.wrong {
-    animation: correct 3s ease forwards;
+    animation: wrong 3s ease forwards;
   }
   @keyframes wrong {
     0%,

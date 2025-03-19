@@ -1,9 +1,44 @@
 import React, { useState } from "react";
-import "./app.css"
+import "./app.css";
 import Trivia from "./component/Trivia";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
+  const [stop, setStop] = useState(false);
+
+  const data = [
+    {
+      id: 1,
+      question: "What is the best youtube channel?",
+      answers: [
+        { text: "Lama Dev", correct: false },
+        { text: "Web Dev Simplified", correct: true },
+        { text: "Traversy Media", correct: false },
+        { text: "Dev Ed", correct: false },
+      ],
+    },
+    {
+      id: 2,
+      question:
+        "Which programming language is primarily used for web development?",
+      answers: [
+        { text: "Python", correct: false },
+        { text: "JavaScript", correct: true },
+        { text: "C++", correct: false },
+        { text: "Java", correct: false },
+      ],
+    },
+    {
+      id: 3,
+      question: "What does CSS stand for?",
+      answers: [
+        { text: "Cascading Style Sheets", correct: true },
+        { text: "Computer Style Sheets", correct: false },
+        { text: "Creative Style System", correct: false },
+        { text: "Colorful Style Syntax", correct: false },
+      ],
+    },
+  ];
   const moneyPyramid = [
     { id: 1, amount: "$ 100" },
     { id: 2, amount: "$ 200" },
@@ -28,13 +63,24 @@ function App() {
           <div className="timer">30</div>
         </div>
         <div className="bottom">
-          <Trivia />
+          <Trivia
+            data={data}
+            setQuestionNumber={setQuestionNumber}
+            questionNumber={questionNumber}
+            setStop={setStop}
+          />
         </div>
       </div>
       <div className="pyramid">
         <ul className="moneyList">
           {moneyPyramid.map((m) => (
-            <li className={questionNumber === m.id ? "moneyListItem active" : "moneyListItem"}>
+            <li
+              className={
+                questionNumber === m.id
+                  ? "moneyListItem active"
+                  : "moneyListItem"
+              }
+            >
               <span className="moneyListItemNumber">{m.id}</span>
               <span className="moneyListItemAmount">{m.amount}</span>
             </li>
@@ -45,4 +91,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
