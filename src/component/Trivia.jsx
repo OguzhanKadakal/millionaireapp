@@ -25,7 +25,11 @@ export default function Trivia({
   }, [letsPlay]);
 
   useEffect(() => {
-    waitSound();
+    const interval = setInterval(() => {
+      waitSound();
+    }, 161000); 
+
+    return () => clearInterval(interval);
   }, [waitSound]);
 
   useEffect(() => {
