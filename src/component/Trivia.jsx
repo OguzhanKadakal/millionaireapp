@@ -5,7 +5,6 @@ import correct from "../assets/correct.mp3";
 import wrong from "../assets/wrong.mp3";
 import wait from "../assets/wait.mp3";
 
-
 export default function Trivia({
   data,
   setQuestionNumber,
@@ -18,19 +17,20 @@ export default function Trivia({
   const [letsPlay] = useSound(play);
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
-  const [waitSound] = useSound(wait);
+  const [waitSound, { stop: stopWaitSound }] = useSound(wait);
 
   useEffect(() => {
     letsPlay();
   }, [letsPlay]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      waitSound();
-    }, 161000); 
-
-    return () => clearInterval(interval);
-  }, [waitSound]);
+    waitSound();
+    const timer = setTimeout(() => stopWaitSound(), 161000);
+    return () => {
+      clearTimeout(timer);
+      stopWaitSound();
+    };
+  }, [waitSound, stopWaitSound]);
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
