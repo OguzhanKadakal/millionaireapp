@@ -89,24 +89,24 @@
   }
 }
 .answer.wrong {
-    animation: wrong 3s ease forwards;
+  animation: wrong 3s ease forwards;
+}
+@keyframes wrong {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
   }
-  @keyframes wrong {
-    0%,
-    22%,
-    42% {
-      background: mediumblue;
-    }
-    20%,
-    40%,
-    60% {
-      background: linear-gradient(#100241, black);
-    }
-    62%,
-    100% {
-      background: crimson;
-    }
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#100241, black);
   }
+  62%,
+  100% {
+    background: crimson;
+  }
+}
 .pyramid {
   width: 25%;
   display: flex;
@@ -138,13 +138,12 @@
 }
 .endText {
   text-align: center;
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  margin: 0;
 }
-.start{
+.start {
   width: 250px;
   height: 100px;
   display: flex;
@@ -171,6 +170,26 @@
 }
 
 .startButton {
+  width: 300px;
+  height: 30px;
+  background: linear-gradient(#3a3a8c, #1a1a4d);
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.endScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.playAgainButton {
   width: 300px;
   height: 30px;
   background: linear-gradient(#3a3a8c, #1a1a4d);

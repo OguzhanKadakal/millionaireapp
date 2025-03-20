@@ -192,7 +192,7 @@ function App() {
 
   useEffect(() => {
     if (questionNumber > 15) {
-      setStop(true);
+      setStop(true); 
     }
   }, [questionNumber]);
 
@@ -202,7 +202,19 @@ function App() {
         <>
           <div className="main">
             {stop ? (
-              <h1 className="endText">You earned: {earned}</h1>
+              <div className="endScreen">
+                <h1 className="endText">You earned: {earned}</h1>
+                <button
+                  className="playAgainButton"
+                  onClick={() => {
+                    setQuestionNumber(1); // Reset question number
+                    setStop(false); // Resume the game
+                    setEarned("$ 0"); // Reset earned amount
+                  }}
+                >
+                  Play Again
+                </button>
+              </div>
             ) : (
               <>
                 <div className="top">
@@ -225,6 +237,7 @@ function App() {
             <ul className="moneyList">
               {moneyPyramid.map((m) => (
                 <li
+                  key={m.id}
                   className={
                     questionNumber === m.id
                       ? "moneyListItem active"
