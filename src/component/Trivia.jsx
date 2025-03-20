@@ -1,8 +1,9 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useSound from "use-sound";
 import play from "../assets/play.mp3";
 import correct from "../assets/correct.mp3";
 import wrong from "../assets/wrong.mp3";
+import wait from "../assets/wait.mp3";
 
 
 export default function Trivia({
@@ -17,10 +18,15 @@ export default function Trivia({
   const [letsPlay] = useSound(play);
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
+  const [waitSound] = useSound(wait);
 
   useEffect(() => {
     letsPlay();
   }, [letsPlay]);
+
+  useEffect(() => {
+    waitSound();
+  }, [waitSound]);
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);

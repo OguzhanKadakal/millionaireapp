@@ -189,6 +189,13 @@ function App() {
     questionNumber > 1 &&
       setEarned(moneyPyramid.find((m) => m.id === questionNumber - 1).amount);
   }, [moneyPyramid, questionNumber]);
+
+  useEffect(() => {
+    if (questionNumber > 15) {
+      setStop(true);
+    }
+  }, [questionNumber]);
+
   return (
     <div className="app">
       {userName ? (
