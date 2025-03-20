@@ -4,6 +4,7 @@ import Trivia from "./component/Trivia";
 import Timer from "./component/Timer";
 
 function App() {
+  const [userName, setUserName] = useState(null);
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
   const [earned, setEarned] = useState("$ 0");
